@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  margin: 0;  
+  width: 500px;
+  height: 500px;
+}
+
+.App  {  
+  background-color: #0B2434;  
+}
