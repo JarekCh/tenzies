@@ -2,33 +2,34 @@ import React, {useEffect, useState} from 'react';
 import Die from './components/Die'
 
 function App() {
-  const [value, setValue] = useState('1');
+  const [dices, setDices] = useState(allNewDice());  
 
-  function allNewDice() {
-    const diceArray = []
+  function allNewDice() {    
+    const dicesArray = [];    
 
     for(let i = 0; i <= 9; i++) {
-      diceArray.push(Math.floor(Math.random() * 6) + 1)
+      dicesArray.push(Math.floor(Math.random() * 6) + 1)
     }
-    console.log(diceArray);
+    
+    return dicesArray;
+  }  
+
+  function rollDice() {
+    setDices(allNewDice())
   }
 
   return (
     <main className="main">     
       {/* Title */}
       <div className='dice__container'>
-        <Die value={value} />
-        <Die value={value} />
-        <Die value={value} />
-        <Die value={value} />
-        <Die value={value} />
-        <Die value={value} />
-        <Die value={value} />
-        <Die value={value} />
-        <Die value={value} />
-        <Die value={value} />
+       {dices.map((dice, i) => (
+            <Die value={dice} key={i}/>
+          )
+        )}  
       </div>      
-      <button onClick={allNewDice}>generate number</button>     
+      <button className='roll__btn' onClick={rollDice}>
+        <h2>Roll</h2>  
+      </button>     
     </main>
   );
 }

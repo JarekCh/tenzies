@@ -6,6 +6,7 @@ body {
   margin: 0;   
   background-color: #0B2434;  
   padding: 20px;
+  font-family: 'Karla', sans-serif;
 }
 
 .main {  
@@ -47,4 +48,24 @@ body {
 
 .die__size {
   font-size: 2rem;
+}
+
+.roll__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #5035FF;
+  border-radius: 5px;
+  height: 40px;
+  font-size: 16px;
+  margin-top: 26px;
+  width: 120px;
+  color: white;
+  font-family: 'Karla', sans-serif;
+  cursor: pointer;
+}
+
+.roll__btn:active {
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
