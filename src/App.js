@@ -1,14 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import Die from './components/Die'
+import Die from './components/Die';
+import {nanoid} from "nanoid"
 
 function App() {
-  const [dices, setDices] = useState(allNewDice());  
+  const [dices, setDices] = useState(allNewDice());      
 
   function allNewDice() {    
     const dicesArray = [];    
 
     for(let i = 0; i <= 9; i++) {
-      dicesArray.push(Math.floor(Math.random() * 6) + 1)
+      dicesArray.push({
+        id: nanoid(),
+        value: Math.floor(Math.random() * 6) + 1,
+        isHeld: false
+      })
     }
     
     return dicesArray;
@@ -22,8 +27,12 @@ function App() {
     <main className="main">     
       {/* Title */}
       <div className='dice__container'>
-       {dices.map((dice, i) => (
-            <Die value={dice} key={i}/>
+       {dices.map((dice) => (
+            <Die 
+              value={dice.value} 
+              key={dice.id}
+              isHeld={dice.isHeld}
+            />
           )
         )}  
       </div>      
