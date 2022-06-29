@@ -22,11 +22,23 @@ body {
   padding: 20px;
 }
 
+.title {
+  font-size: 40px;
+  margin: 0;
+}
+
+.instructions {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  margin-top: 0;
+  text-align: center;
+}
+
 .dice__container {  
   display: grid;
   grid-template: auto auto/ repeat(5, 1fr);
   gap: 18px;
-
+  margin-bottom: 30px;
 }
 
 .die {

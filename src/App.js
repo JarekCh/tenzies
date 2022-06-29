@@ -6,15 +6,19 @@ function App() {
   const [dices, setDices] = useState(allNewDice());      
   console.log("🚀 ~ file: App.js ~ line 7 ~ App ~ dices", dices)
 
+  function generateNewDie() {
+    return {
+        value: Math.ceil(Math.random() * 6),
+        isHeld: false,
+        id: nanoid()
+    }
+  }  
+
   function allNewDice() {    
     const dicesArray = [];    
 
     for(let i = 0; i <= 9; i++) {
-      dicesArray.push({
-        id: nanoid(),
-        value: Math.floor(Math.random() * 6) + 1,
-        isHeld: false
-      })
+      dicesArray.push(generateNewDie())
     }
     
     return dicesArray;
@@ -23,7 +27,8 @@ function App() {
   function rollDice() {
     setDices((prevState) => {
       return prevState.map(dice =>{
-        return dice.isHeld ? dice : {...dice, value: Math.floor(Math.random() * 6) + 1}
+        return dice.isHeld ?
+        dice : generateNewDie()
       })
     })
   }
@@ -31,14 +36,18 @@ function App() {
   function holdDice(id) {
     setDices((prevState) => {
       return prevState.map((dice) => {
-        return dice.id === id ? {...dice, isHeld: !dice.isHeld} : dice
+        return dice.id === id ? 
+        {...dice, isHeld: !dice.isHeld} : dice
       })
     })    
   }
 
   return (
     <main className="main">     
-      {/* Title */}
+      <h1 className="title">Tenzies</h1>
+      <p className="instructions">Roll until all dice are the same.
+         Click each die to freeze it at its current value between rolls.
+      </p>
       <div className='dice__container'>
        {dices.map((dice) => (
             <Die 
