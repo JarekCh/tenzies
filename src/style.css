@@ -37,8 +37,7 @@ body {
 .dice__container {  
   display: grid;
   grid-template: auto auto/ repeat(5, 1fr);
-  gap: 18px;
-  margin-bottom: 30px;
+  gap: 18px;  
 }
 
 .die {
@@ -67,10 +66,10 @@ body {
   border: none;
   background-color: #5035FF;
   border-radius: 5px;
-  height: 40px;
+  height: 50px;
   font-size: 16px;
   margin-top: 26px;
-  width: 120px;
+  width: 150px;
   color: white;
   font-family: 'Karla', sans-serif;
   cursor: pointer;
