@@ -1,12 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import Die from './components/Die';
 import {nanoid} from "nanoid"
-import Confetti from './components/Confetti';
+import Confetti from "react-confetti";
 
 function App() {
   const [dices, setDices] = useState(allNewDice());      
-  const [tenzies, setTenzies] = useState(false);
-  console.log("🚀 ~ file: App.js ~ line 9 ~ App ~ tenzies", tenzies)
+  const [tenzies, setTenzies] = useState(false);  
 
   useEffect(() => {
     const allHeld = dices.every(die => die.isHeld)
