@@ -4,6 +4,7 @@ import {nanoid} from "nanoid"
 
 function App() {
   const [dices, setDices] = useState(allNewDice());      
+  console.log("🚀 ~ file: App.js ~ line 7 ~ App ~ dices", dices)
 
   function allNewDice() {    
     const dicesArray = [];    
@@ -20,7 +21,19 @@ function App() {
   }  
 
   function rollDice() {
-    setDices(allNewDice())
+    setDices((prevState) => {
+      return prevState.map(dice =>{
+        return dice.isHeld ? dice : {...dice, value: Math.floor(Math.random() * 6) + 1}
+      })
+    })
+  }
+
+  function holdDice(id) {
+    setDices((prevState) => {
+      return prevState.map((dice) => {
+        return dice.id === id ? {...dice, isHeld: !dice.isHeld} : dice
+      })
+    })    
   }
 
   return (
@@ -32,6 +45,7 @@ function App() {
               value={dice.value} 
               key={dice.id}
               isHeld={dice.isHeld}
+              holdDice={() => holdDice(dice.id)}
             />
           )
         )}  

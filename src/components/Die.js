@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Die = ( {value, isHeld} ) => {  
+const Die = ( {value, isHeld, holdDice} ) => {  
     const styles = {
         backgroundColor: isHeld ? "#59E391" : "#FFFFFF"
     }
@@ -8,6 +8,7 @@ const Die = ( {value, isHeld} ) => {
     return (
         <div className='die'
             style={styles}
+            onClick={holdDice}
         >
             <h2 className='die__size'>{value}</h2>        
         </div>
